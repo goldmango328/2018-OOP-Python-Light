@@ -8,7 +8,8 @@
 
 :size: 가구의 사이즈   
 :color: 가구의 대표색상  
-:source: 가구 판매 출처  
+:source: 가구 판매처  
+:image url: 가구 이미지 url 출처  
 
 ## 데이터 저장 형식  
 > dataset을 정리하는 방식을 어떤 형식으로 저장할 것인가?  
