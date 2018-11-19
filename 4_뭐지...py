@@ -7,14 +7,14 @@ import sys
  
 class Dialog(QDialog):
  
-    def slot_method(self):
-        print('으아악.. 눌려졌어..')
+    def slot_method(self):              # 버튼이 눌리면 실행되는 함수
+        print('으아악.. 눌려졌어..')   
  
     def __init__(self):
         super(Dialog, self).__init__()
  
-        button=QPushButton("또 누르게..?")
-        button.clicked.connect(self.slot_method)
+        button=QPushButton("또 누르게..?")          # 버튼에 쓰여질 글
+        button.clicked.connect(self.slot_method)        # 버튼이 눌린다면 slot_method 
  
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(button)
