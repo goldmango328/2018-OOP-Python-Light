@@ -46,6 +46,9 @@
 - [Selenium](https://www.seleniumhq.org/) :: 웹파싱에 이용  
 - [beautifulsoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) :: 웹파싱에 이용  
 - [OpenCV-Python](https://opencv.org/) :: 이미지 처리에 이용  
+- matplotlib :: 이미지 처리에 이용  
+- PIL :: 이미지 처리에 이용  
+
 #### 2) 구현에 필요한 기술
 - 사진을 사이트에 업로드 하여 사진 속에 사용된 컬러의 색상 값을 파싱해오는 기술  
 - 사용자가 입력한 조건에 맞추어서 인테리어 제품을 파싱해오는 기술  
