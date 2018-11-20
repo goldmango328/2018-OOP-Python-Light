@@ -1,7 +1,8 @@
 # Parsing Data  
-> 배경제거 / 배경비제거 사이트를 나누어서 작업을 진행해야 함  
-* 배경제거가 필요한 사이트 :  
-* 배경제거가 필요하지 않은 사이트 :  
+> 전체 조사한 사이트들 중 아래의 사이트에서 자료를 긁어오는 것으로 최종 결정을 내림    
+1) [이케아](https://www.ikea.com/) :: 유현아 **작업중**  
+2) [리모드](http://www.remod.co.kr/)  
+4) [자주JAJU](http://living.sivillage.com/jaju/display/displayShop?temp=www.jaju.co.kr) :: 지명금 **작업중**  
 
 ## 파싱해올 데이터  
 > 각 사이트에서 파싱해올 자료  
@@ -12,5 +13,8 @@
 :source: 가구 판매처  
 :image url: 가구 이미지 url 출처  
 
-## 데이터 저장 형식  
-> dataset을 정리하는 방식을 어떤 형식으로 저장할 것인가?  
+## import module   
+> 이케아, 리모드, 자주를 파싱하는 데 이용한 모듈  
+import image_color_cluster [출처](https://github.com/goldmango328/2018-OOP-Python-Light/tree/DataParsing/Image_Color_Cluster)  
+import beautifulsoup4  
+
