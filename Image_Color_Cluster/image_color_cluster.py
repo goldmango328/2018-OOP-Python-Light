@@ -43,26 +43,6 @@ def centroid_histogram(clt):
     # return the histogram
     return hist
 
-def plot_colors(hist, centroids):
-    # initialize the bar chart representing the relative frequency
-    # of each of the colors
-    bar = np.zeros((50, 300, 3), dtype="uint8")
-    startX = 0
-
-    # loop over the percentage of each cluster and the color of
-    # each cluster
-    # percent : 차지하는 비율
-    
-    for (percent, color) in zip(hist, centroids):
-        # plot the relative percentage of each cluster
-        endX = startX + (percent * 300)
-        cv2.rectangle(bar, (int(startX), 0), (int(endX), 50),
-                      color.astype("uint8").tolist(), -1)
-        startX = endX
-
-    # return the bar chart
-    return bar
-
 def image_color_cluster(image_path, k = 5):
     convert_image = changeBackground(image_path).convert('RGB')
     convert_image = np.array(convert_image)
@@ -76,13 +56,7 @@ def image_color_cluster(image_path, k = 5):
     clt.fit(image)
 
     hist = centroid_histogram(clt)
-    bar = plot_colors(hist, clt.cluster_centers_)
     dct = getColorPercent(hist, clt.cluster_centers_)
-    
-    plt.figure()
-    plt.axis("off")
-    plt.imshow(bar)
-    plt.show()
 
 def changeBackground(image_path):
     img = Image.open(image_path)
@@ -99,10 +73,7 @@ def changeBackground(image_path):
     img.putdata(newData)
     return img
 
-#preview image
-image_path = 'chair.jpg'
-image = mpimg.imread(image_path,cv2.IMREAD_UNCHANGED)
-plt.imshow(image)
-
-image_color_cluster(image_path)
+if __name__ == "__main__":
+    image_path = 'chair.jpg'
+    image_color_cluster(image_path)
     
