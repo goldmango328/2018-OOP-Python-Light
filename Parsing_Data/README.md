@@ -1,8 +1,8 @@
 # Parsing Data  
 > 전체 조사한 사이트들 중 아래의 사이트에서 자료를 긁어오는 것으로 최종 결정을 내림    
 1) [이케아](https://www.ikea.com/) :: 유현아 **작업중**  
-2) [리모드](http://www.remod.co.kr/)  
-4) [자주JAJU](http://living.sivillage.com/jaju/display/displayShop?temp=www.jaju.co.kr) :: 지명금 **작업중**  
+2) [리모드](http://www.remod.co.kr/)  :: 지명금 **작업중**  
+4) [자주JAJU](http://living.sivillage.com/jaju/display/displayShop?temp=www.jaju.co.kr) :: 지명금 ****  
 
 ## 파싱해올 데이터  
 > 각 사이트에서 파싱해올 자료  
