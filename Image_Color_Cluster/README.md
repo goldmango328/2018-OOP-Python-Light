@@ -7,10 +7,9 @@
 3) image_color_cluster3.py :: **진짜 최종본!**(image url로 변환 가능함)  
 
 ## image_color_cluster3 이용법  
-
-> image_url : image가 들어있는 url  
-> image_info : 정렬된 색상테마를 담은 dictionary  
-
+<pre><code># image_url : image가 들어있는 url  
 image = URLtoImage(image_url)  
+# image_info : 정렬된 색상테마를 담은 dictionary  
 image_info = image_color_cluster(image)  
+</code></pre>
 
