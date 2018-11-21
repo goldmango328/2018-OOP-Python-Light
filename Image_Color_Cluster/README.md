@@ -8,8 +8,9 @@
 
 ## image_color_cluster3 이용법  
 
-/# image_url : image가 들어있는 url  
+> image_url : image가 들어있는 url  
+> image_info : 정렬된 색상테마를 담은 dictionary  
+
 image = URLtoImage(image_url)  
-/# image_info : 정렬된 색상테마를 담은 dictionary  
 image_info = image_color_cluster(image)  
 
