@@ -1,0 +1,22 @@
+버튼은 QMessageBox마다 두 개씩만 가능한 것 같구요..
+사용가능한 목록은 다음과 같습니다.
+
+QMessageBox.Cancel	
+QMessageBox.Ok	
+QMessageBox.Help
+QMessageBox.Open	
+QMessageBox.Save	
+QMessageBox.SaveAll
+QMessageBox.Discard	
+QMessageBox.Close	
+QMessageBox.Apply
+QMessageBox.Reset	
+QMessageBox.Yes	
+QMessageBox.YesToAll
+QMessageBox.No	
+QMessageBox.NoToAll	
+QMessageBox.NoButton
+QMessageBox.RestoreDefaults	
+QMessageBox.Abort	
+QMessageBox.Retry
+QMessageBox.Ignore
