@@ -13,3 +13,20 @@ image = URLtoImage(image_url)
 image_info = image_color_cluster(image)  
 </code></pre>
 
+## import module  
+<pre><code>import numpy as np  
+import cv2  
+import matplotlib.image as mpimg  
+from matplotlib import pyplot as plt  
+from sklearn.cluster import KMeans  
+from PIL import Image  
+import urllib  
+import operator  
+</code></pre>
+
+import **numpy,cv2,matplotlib,sklearn.cluster,PIL,urllib, operator**  
+
++) install sklearn.cluster
+<pre><code>pip install -U scikit-learn</code></pre>  
++) install cv2  
+<pre><code>pip install OpenCV-Python</code></pre>  
