@@ -1,6 +1,5 @@
 import bs4
 import requests
-import re
 
 
 def get_html(url):
