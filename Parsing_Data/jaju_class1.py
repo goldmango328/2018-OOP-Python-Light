@@ -4,6 +4,8 @@
 # selenium 설치 = pip install selenium
 # phantomjs 설치 = http://phantomjs.org/download.html에서 압축파일 다운로드 -> 압축해제
 
+# 의자, 책상 (o) 소파, 옷장 (x) -> jaju에서 소파, 옷장을 보이지 않고 있음
+
 from image_color_cluster3 import *
 import bs4
 from selenium import webdriver
