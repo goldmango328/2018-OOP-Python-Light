@@ -9,7 +9,7 @@ class App(QWidget):
     def initUI(self, MainWindow):
         MainWindow.setObjectName("what's your name")
         MainWindow.resize(300,200)
-        MainWindow.move(700,400)
+        MainWindow.move(200,400)
         self.centralwidget = QWidget(MainWindow)
 
         self.explain = QLabel(self.centralwidget)
