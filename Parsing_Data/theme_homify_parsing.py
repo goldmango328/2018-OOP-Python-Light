@@ -47,5 +47,5 @@ def get_theme_image(input_theme):
 
     return image
 
-
-print(get_theme_image('모던'))
+if __name__ == "__main__":
+    print(get_theme_image('모던'))
