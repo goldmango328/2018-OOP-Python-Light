@@ -1,5 +1,6 @@
 import bs4
 import requests
+from image_color_cluster3 import *
 
 
 def get_html(url):
@@ -31,6 +32,7 @@ class sofa:
         self.name = []
         self.price = []
         self.size = []
+        self.color = []
         self.url = get_url(self.data)
 
     def get_img(self, sub):
@@ -40,6 +42,7 @@ class sofa:
             if 'src' in line:
                 line = line.replace('"', '')
                 line = line.replace('src=', '')
+                line = 'https://www.ikea.com'+line
                 self.image.append(line)
         return self.image
 
@@ -69,6 +72,15 @@ class sofa:
                 self.size.append([size_in[0].split(': ')[1],size_in[1].split(': ')[1],size_in[2].split(': ')[1]])
         return self.size
 
+    def get_color(self):
+        for image_url in self.image:
+            image = URLtoImage(image_url)
+            image_info = image_color_cluster(image)
+
+            print(list(image_info.keys())[0])
+            self.color.append(list(image_info.keys())[0])
+        return self.color
+        
     def print_all(self):
         for i in self.url:
             sub_html = get_html(i)
@@ -80,14 +92,17 @@ class sofa:
                 self.get_price(sub)
                 self.get_size(sub)
                 self.get_img(sub)
-        return self.url, self.name, self.price, self.image, self.size
+                self.get_color()
+        return self.url, self.name, self.price, self.image, self.size, self.color
 
 
 #class 처리
-SOFA = sofa('https://www.ikea.com/kr/ko/catalog/categories/departments/living_room/39130/')
-url, name, price, image, size = SOFA.print_all()
-print(len(url), url)
-print(len(name), name)
-print(len(price), price)
-print(len(image), image)
-print(len(size), size)
+if __name__ == "__main__":
+    SOFA = sofa('https://www.ikea.com/kr/ko/catalog/categories/departments/living_room/39130/')
+    url, name, price, image, size, color = SOFA.print_all()
+    print(len(url), url)
+    print(len(name), name)
+    print(len(price), price)
+    print(len(image), image)
+    print(len(size), size)
+    print(len(color), color)
