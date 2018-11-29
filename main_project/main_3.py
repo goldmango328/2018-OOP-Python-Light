@@ -3,12 +3,12 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
-class Checking(object):
+class Teama(object):
 
     def make_checkbox(self, OtherWindow):    # 의자, 책상, 소파, 옷장
         OtherWindow.setObjectName("ester egg")
         OtherWindow.resize(150,250)
-        OtherWindow.move(900,400)
+        OtherWindow.move(800,400)
         self.centralwidget = QWidget(OtherWindow)
         self.centralwidget.setObjectName("I'm grooot")
                 
@@ -83,7 +83,7 @@ class Checking(object):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     OtherWindow = QMainWindow()
-    ui = Checking()
+    ui = Teama()
     ui.make_checkbox(OtherWindow)
     OtherWindow.show()
     sys.exit(app.exec_())
