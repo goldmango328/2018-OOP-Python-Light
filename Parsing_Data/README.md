@@ -16,6 +16,7 @@
 ## import module   
 > 이케아, 리모드, 자주를 파싱하는 데 이용한 모듈들에 대한 정리  
 
-import [image_color_cluster](https://github.com/goldmango328/2018-OOP-Python-Light/tree/DataParsing/Image_Color_Cluster)  
+import [image_color_cluster3](https://github.com/goldmango328/2018-OOP-Python-Light/tree/DataParsing/Image_Color_Cluster)  
 import beautifulsoup4  
+from selenium import webdriver  
 
