@@ -5,7 +5,7 @@ from PyQt5.QtCore import *
 
 class Teama(object):
 
-    def make_checkbox(self, OtherWindow):    # 의자, 책상, 소파, 옷장
+    def make_checkbox(self, OtherWindow):   
         OtherWindow.setObjectName("ester egg")
         OtherWindow.resize(150,250)
         OtherWindow.move(800,400)
