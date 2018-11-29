@@ -2,10 +2,11 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+from main_4 import Images
 
 class Teama(object):
 
-    def make_checkbox(self, OtherWindow):   
+    def make_checkbox(self, OtherWindow):
         OtherWindow.setObjectName("ester egg")
         OtherWindow.resize(150,250)
         OtherWindow.move(800,400)
@@ -34,13 +35,18 @@ class Teama(object):
         font.setBold(True)
         self.next.setFont(font)
         self.next.setObjectName('happy happy happy day...?')
+        self.next.clicked.connect(self.NextWindow)
 
         OtherWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(OtherWindow)
         self.retranslateUi(OtherWindow)
         QMetaObject.connectSlotsByName(OtherWindow)
 
-        
+    def NextWindow(self):
+        self.window = QMainWindow()
+        self.ui = Images()
+        self.ui.show_images(self.window)
+        self.window.show()
 
     def retranslateUi(self, OtherWindow):
         translate = QCoreApplication.translate
