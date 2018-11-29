@@ -10,8 +10,6 @@ furni = {'chair':['139','140','141','143'],'sofa':['138'],'cutton':[],'table':['
 def get_html(url):
     global driver
     driver.get(url)
-    driver.set_window_position(0, 0)
-    driver.set_window_size(0, 0)
     
     html = driver.page_source
     return html 
