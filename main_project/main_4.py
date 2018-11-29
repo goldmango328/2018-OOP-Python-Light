@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import urllib.request
-#from io import StringIO 
+#from io import StringIO
 
 class Images(object):
 
@@ -19,8 +19,9 @@ class Images(object):
         image.loadFromData(data)
         lbl = QLabel(self.centralwidget)
         lbli = QPixmap(image)
-        lbl.setPixmap(lbli)
-        OtherWindow.resize(lbli.width(),lbli.height())
+        lblii = lbli.scaled(500,500,Qt.KeepAspectRatio)
+        lbl.setPixmap(lblii)
+        OtherWindow.resize(lblii.width(), lblii.height())
 
         OtherWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(OtherWindow)
