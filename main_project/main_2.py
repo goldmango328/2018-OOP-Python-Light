@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+from main_3 import Teama
 
 class Checking(object):
 
@@ -34,13 +35,18 @@ class Checking(object):
         font.setBold(True)
         self.next.setFont(font)
         self.next.setObjectName('congratulation')
+        self.next.clicked.connect(self.NextWindow)
 
         OtherWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(OtherWindow)
         self.retranslateUi(OtherWindow)
         QMetaObject.connectSlotsByName(OtherWindow)
 
-        
+    def NextWindow(self):
+        self.window = QMainWindow()
+        self.ui = Teama()
+        self.ui.make_checkbox(self.window)
+        self.window.show()
 
     def retranslateUi(self, OtherWindow):
         translate = QCoreApplication.translate
