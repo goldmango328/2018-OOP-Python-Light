@@ -10,7 +10,7 @@ furni = {'chair':['139','140','141','143'],'sofa':['138'],'cutton':[],'table':['
 def get_html(url):
     global driver
     driver.get(url)
-    
+   
     html = driver.page_source
     return html 
 
@@ -34,7 +34,7 @@ def get_product_url(data):
     sub_url = list(set(sub_url))
     return sub_url
 
-class lounge_chair:
+class furni:
     def __init__(self, in_url):
         self.html= get_html(in_url)
         self.soup = bs4.BeautifulSoup(self.html, 'html.parser')
@@ -45,6 +45,8 @@ class lounge_chair:
         self.price = []
         self.size = []
         self.url = get_product_url(self.soup)
+        
+        self.get_data()
 
     def get_img(self, sub):
         img = sub.select('div.box a img')
@@ -149,7 +151,6 @@ class lounge_chair:
         self.get_data()
         
     def print_all(self):
-        self.get_data()
         self.get_color()
         return self.url, self.name, self.price, self.image, self.size, self.color
 
@@ -159,17 +160,55 @@ if __name__ == "__main__":
     driver = webdriver.PhantomJS(PhantomJS_path)
     driver.implicitly_wait(1)
     
-    # 일단은 lounge chair만 가져옴! 다른 속성의 chair와 table 외 다른 가구들도 가져와야 함..
     url = 'http://www.remod.co.kr/product/list.html?cate_no='
-    CHAIR = lounge_chair(url+'139&page=1')
+
+    # 의자 : test success :: 199개
+    
+    CHAIR = furni(url+'139&page=1')
     CHAIR.changeURL(url+'139$page=2')
     CHAIR.changeURL(url+'139&page=3')
+    for i in range(1,4):
+        CHAIR.changeURL(url+'140%page='+str(i))
+    CHAIR.changeURL(url+'141&page=1')
+    CHAIR.changeURL(url+'143&page=1')
     ch_url, ch_name, ch_price, ch_img, ch_size, ch_color = CHAIR.print_all()
-    print(len(ch_url), ch_url)
-    print(len(ch_name), ch_name)
-    print(len(ch_price), ch_price)
-    print(len(ch_img), ch_img)
-    print(len(ch_size), ch_size)
-    print(len(ch_color), ch_color)
+    # print('CHAIR'+str(len(ch_url)))
+
+    # 옷장
+    DRESSER = furni(url+'175&page=1')
+    dr_url, dr_name, dr_price, dr_img, dr_size, dr_color = DRESSER.print_all()
+    # print(len(dr_url),dr_url)
+    # print(len(dr_name),dr_name)
+    # print(len(dr_price),dr_price)
+    # print(len(dr_img),dr_img)
+    # print(len(dr_color),dr_color)
+    print("DRESSER "+str(len(dr_url)))
+          
+    # 소파
+    SOFA = furni(url+'138&page=1')
+    SOFA.changeURL(url + '138&page=2')
+    SOFA.changeURL(url + '138&page=3')
+    sf_url, sf_name, sf_price, sf_img, sf_size, sf_color = SOFA.print_all()
+    print('SOFA')
+
+    # 테이블 '134','135','136','137'
+    TABLE = furni(url+'134&page=1')
+    TABLE.changeURL(url + '134&page=2')
+    TABLE.changeURL(url + '134&page=3')
+    TABLE.changeURL(url + '135&page=1')
+    TABLE.changeURL(url + '136&page=1')
+    TABLE.changeURL(url + '136&page=2')
+    TABLE.changeURL(url + '137&page=1')
+    TABLE.changeURL(url + '137&page=2')
+    tb_url, tb_name, tb_price, tb_img, tb_size, tb_color = TABLE.print_all()
+    print('TABLE')
+    
+    # 
+    # print(len(ch_url), ch_url)
+    # print(len(ch_name), ch_name)
+    # print(len(ch_price), ch_price)
+    # print(len(ch_img), ch_img)
+    # print(len(ch_size), ch_size)
+    # print(len(ch_color), ch_color)
     
     
