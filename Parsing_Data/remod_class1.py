@@ -1,6 +1,8 @@
 # remod class
 # 실행하기 전, selenium 설치와 phantomjs 설치가 되어있어야 함
 
+# 크기 데이터가 없으면 None
+
 from image_color_cluster3 import *
 import bs4
 from selenium import webdriver
@@ -49,6 +51,7 @@ class furni:
         self.get_data()
 
     def get_img(self, sub):
+        print("IMAGE...")
         img = sub.select('div.box a img')
         for i in img:
             img_in = i.get('src')
@@ -58,6 +61,7 @@ class furni:
         return self.image
 
     def get_name(self, sub):
+        print("NAME...")
         name = sub.select('div.box a span')
         for i in name:
             name_in = i.getText().strip()
@@ -66,6 +70,7 @@ class furni:
         return self.name
 
     def get_price(self, sub):
+        print("PRICE...")
         price = sub.select('div.box ul.xans-element-.xans-product.xans-product-listitem li.xans-record- span')
         for i in price:
             price_in = i.getText().strip()
@@ -83,6 +88,7 @@ class furni:
         return self.price
 
     def get_size(self, data): # 여기에 source가 들어가지를 않음.. empty list
+        print("SIZE...")
         sub_url = get_product_url(data)
         for url in sub_url:
             sub_html = get_html(url)
@@ -131,6 +137,7 @@ class furni:
         return self.size
 
     def get_color(self):
+        print("COLOR...")
         for image_url in self.image:
             image = URLtoImage(image_url)
             image_info = image_color_cluster(image)
@@ -162,8 +169,7 @@ if __name__ == "__main__":
     
     url = 'http://www.remod.co.kr/product/list.html?cate_no='
 
-    # 의자 : test success :: 199개
-    
+    # 의자 : test success(단일) :: 199개
     CHAIR = furni(url+'139&page=1')
     CHAIR.changeURL(url+'139$page=2')
     CHAIR.changeURL(url+'139&page=3')
@@ -172,9 +178,10 @@ if __name__ == "__main__":
     CHAIR.changeURL(url+'141&page=1')
     CHAIR.changeURL(url+'143&page=1')
     ch_url, ch_name, ch_price, ch_img, ch_size, ch_color = CHAIR.print_all()
-    # print('CHAIR'+str(len(ch_url)))
+    print('[ CHAIR ]'+str(len(ch_url)))
 
-    # 옷장
+    # 옷장 : test success(단일) :: 6개
+    
     DRESSER = furni(url+'175&page=1')
     dr_url, dr_name, dr_price, dr_img, dr_size, dr_color = DRESSER.print_all()
     # print(len(dr_url),dr_url)
@@ -182,16 +189,19 @@ if __name__ == "__main__":
     # print(len(dr_price),dr_price)
     # print(len(dr_img),dr_img)
     # print(len(dr_color),dr_color)
-    print("DRESSER "+str(len(dr_url)))
-          
-    # 소파
+    print("[ DRESSER ] "+str(len(dr_url)))
+    
+    
+    # 소파 : test fail(단일)
+    """
     SOFA = furni(url+'138&page=1')
     SOFA.changeURL(url + '138&page=2')
     SOFA.changeURL(url + '138&page=3')
     sf_url, sf_name, sf_price, sf_img, sf_size, sf_color = SOFA.print_all()
-    print('SOFA')
-
-    # 테이블 '134','135','136','137'
+    print('[ SOFA ] ' + str(len(sf_url)))
+    """
+    
+    # 테이블 : test success(단일) :: 173개
     TABLE = furni(url+'134&page=1')
     TABLE.changeURL(url + '134&page=2')
     TABLE.changeURL(url + '134&page=3')
@@ -201,7 +211,7 @@ if __name__ == "__main__":
     TABLE.changeURL(url + '137&page=1')
     TABLE.changeURL(url + '137&page=2')
     tb_url, tb_name, tb_price, tb_img, tb_size, tb_color = TABLE.print_all()
-    print('TABLE')
+    print('[ TABLE ] ' + str(len(tb_url)))
     
     # 
     # print(len(ch_url), ch_url)
