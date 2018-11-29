@@ -21,7 +21,8 @@ import beautifulsoup4
 from selenium import webdriver  
 
 ## 2018-11-29 ERROR  
-Traceback (most recent call last):
+remod_class1.py를 실행하다가 오류가 발생했어요ㅠㅜ  
+<pre><code>Traceback (most recent call last):
   File "C:\Users\지명금\Desktop\OOP-Python-Light\remod_class1.py", line 182, in <module>
     sf_url, sf_name, sf_price, sf_img, sf_size, sf_color = SOFA.print_all()
   File "C:\Users\지명금\Desktop\OOP-Python-Light\remod_class1.py", line 154, in print_all
@@ -38,4 +39,4 @@ Traceback (most recent call last):
     im.frombytes(data, decoder_name, args)
   File "C:\Users\지명금\AppData\Local\Programs\Python\Python37-32\lib\site-packages\PIL\Image.py", line 801, in frombytes
     raise ValueError("not enough image data")
-ValueError: not enough image data
+ValueError: not enough image data</code></pre>
