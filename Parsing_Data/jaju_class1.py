@@ -4,17 +4,13 @@
 # selenium 설치 = pip install selenium
 # phantomjs 설치 = http://phantomjs.org/download.html에서 압축파일 다운로드 -> 압축해제
 
-# 의자, 책상 (o) 소파, 옷장 (x) -> jaju에서 소파, 옷장을 보이지 않고 있음
-
 from image_color_cluster3 import *
 import bs4
 from selenium import webdriver
-
+    
 def get_html(url):
     # PhantomJS 가 설치되어있는 경로
-    PhantomJS_path = '/Users/지명금/Desktop/phantomjs-2.1.1-windows/phantomjs-2.1.1-windows/bin/phantomjs'
-    driver = webdriver.PhantomJS(PhantomJS_path)
-    driver.implicitly_wait(1)
+    global driver
     
     driver.get(url)
     html = driver.page_source
@@ -40,7 +36,14 @@ class chair:
         self.name = []
         self.price = []
         self.size = []
+        self.url = []
+        
+    def get_url(self):
+        self.url = get_suburl(self.soup)
+        self.url = [ self.url[i] for i in self.idx ]
 
+        return self.url
+    
     def get_img(self, sub):
         img = sub.select('div.img img')
         for i in img:
@@ -109,7 +112,8 @@ class chair:
         # print("SUCCESS#2")
         self.get_color()
         # print("DONE")
-        return self.name, self.price, self.image, self.size, self.color
+        self.get_url()
+        return self.url, self.name, self.price, self.image, self.size, self.color
 
 class table(chair):
     def get_name(self, sub):
@@ -126,9 +130,14 @@ class table(chair):
         return self.name
 
 if __name__ == "__main__":
+    PhantomJS_path = '/Users/지명금/Desktop/phantomjs-2.1.1-windows/phantomjs-2.1.1-windows/bin/phantomjs'
+    driver = webdriver.PhantomJS(PhantomJS_path)
+    driver.implicitly_wait(1)
+
     url = 'http://living.sivillage.com/jaju/display/displayCategory?dspCatNo=010000041353&upDspCatNo=010000000007&chnSct=P'
     CHAIR = chair(url)
     TABLE = table(url)
-    ch_name, ch_price, ch_img, ch_size, ch_color = CHAIR.print_all()
+    ch_url, ch_name, ch_price, ch_img, ch_size, ch_color = CHAIR.print_all()
     # print(len(ch_name), len(ch_price), len(ch_img), len(ch_size), len(ch_color))
-    tb_name, tb_price, tb_img, tb_size, tb_color = TABLE.print_all()   
+    tb_url, tb_name, tb_price, tb_img, tb_size, tb_color = TABLE.print_all()   
+    
