@@ -14,16 +14,21 @@ class Images(object):
         data = urllib.request.urlopen(images).read()
         image = QImage()
         image.loadFromData(data)
-        lbl = QLabel(self.scrollAreaWidgetContents)
-        lbl.setGeometry(30,30+350*n,300,300)
+        lbl = QPushButton(self.scrollAreaWidgetContents)
+        lbl.setGeometry(30,30+350*n,260,300)
+        lbl.clicked.connect(self.click)
         lbli = QPixmap(image)
         lbli.scaled(300,300,Qt.KeepAspectRatio)
-        lblii = lbl.setPixmap(lbli)
+        lblii = lbl.setIcon(QIcon(lbli))
+        lblii = lbl.setIconSize(QSize(300,300))
         return lblii
 
+    def click(self):
+        print("I'm clicked")
+
     def show_images(self, OtherWindow):
-        OtherWindow.resize(600,600)
-        OtherWindow.move(10,10)
+        OtherWindow.resize(360,600)
+        OtherWindow.move(1000,200)
         self.centralwidget = QWidget(OtherWindow)
 
         layout = QVBoxLayout(self.centralwidget)
@@ -32,7 +37,7 @@ class Images(object):
         layout.addWidget(self.scrollArea)
 
         self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QRect(0,0,500,10500))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0,0,300,10500))
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         layout = QHBoxLayout(self.scrollAreaWidgetContents)
 
