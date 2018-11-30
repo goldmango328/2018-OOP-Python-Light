@@ -11,9 +11,12 @@ def get_ColorChart(chart):
     chart = list(hex_to_rgb(value) for value in chart)
     return chart
 
+# im_color :: 이미지 대표 색상 ex) #FFFFFF
+# chart :: 테마 색상 차트  ex) ['#FFFFFF','#0FAAFG' ... ]
 def isColorSimilar(im_color, chart):
-    chart = get_ColorChart(chart)
-    rgb = np.array([[im_color]])
+    im_color = hex_to_rgb(im_color) # HEX 코드로 된 이미지 대표 색상을 RGB로 변환
+    chart = get_ColorChart(chart) # 테마 색상차트의 element를 전부 hex에서 rgb로 변환
+    rgb = np.array([[im_color]]) 
     lab = rgb2lab(rgb)
     threshold = 20 # 얼마나 비슷한 색상을 가져올건지 범위 설정
 
