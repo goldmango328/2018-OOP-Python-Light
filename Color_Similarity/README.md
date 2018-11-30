@@ -1,5 +1,6 @@
 # NEED TO BE INSTALLED   
-최종파일 : **color_similarity2.py**
+최종파일 : **color_similarity2.py**  
+참고 : http://hanzratech.in/2015/01/16/color-difference-between-2-colors-using-python.html  
 
 위 파일에서 이용되는 모듈:  
 <pre><code>from colormath.color_objects import sRGBColor, LabColor
