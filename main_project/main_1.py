@@ -47,7 +47,7 @@ class App(QWidget):
 
     def retranslateUi(self, MainWindow):
         translate = QCoreApplication.translate
-        MainWindow.setWindowTitle(translate("MainWindow","멧돌 1"))
+        MainWindow.setWindowTitle(translate("MainWindow"," 1"))
         self.explain.setText(translate('MainWindow','방 사이즈.. 선택해보등가...'))
         self.choice_room_button1.setText(translate('MainWindow','원룸'))
         self.choice_room_button2.setText(translate('MainWindow','투룸'))
