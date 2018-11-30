@@ -1,4 +1,6 @@
 # NEED TO BE INSTALLED   
+최종파일 : **color_similarity2.py**
+
 위 파일에서 이용되는 모듈:  
 <pre><code>from colormath.color_objects import sRGBColor, LabColor
 from colormath.color_conversions import convert_color
