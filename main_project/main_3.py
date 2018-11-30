@@ -50,7 +50,7 @@ class Teama(object):
 
     def retranslateUi(self, OtherWindow):
         translate = QCoreApplication.translate
-        OtherWindow.setWindowTitle(translate("OtherWindow", "멧돌 3"))
+        OtherWindow.setWindowTitle(translate("OtherWindow", " 3"))
         self.checkbox1.setText(translate("OtherWindow",'모던'))
         self.checkbox2.setText(translate("OtherWindow",'미니멀'))
         self.checkbox3.setText(translate("OtherWindow",'북유럽'))
