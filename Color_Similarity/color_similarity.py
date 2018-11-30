@@ -1,7 +1,6 @@
 import numpy as np
 from skimage import io
 from skimage.color import rgb2lab, deltaE_cie76
-from matplotlib import pyplot as plt
 
 def hex_to_rgb(value):
     value = value.lstrip('#')
