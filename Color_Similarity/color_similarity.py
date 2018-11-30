@@ -12,6 +12,7 @@ def get_ColorChart(chart):
     return chart
 
 def isColorSimilar(im_color, chart):
+    chart = get_ColorChart(chart)
     rgb = np.array([[im_color]])
     lab = rgb2lab(rgb)
     threshold = 20 # 얼마나 비슷한 색상을 가져올건지 범위 설정
