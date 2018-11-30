@@ -37,7 +37,7 @@ class Images(object):
         layout.addWidget(self.scrollArea)
 
         self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QRect(0,0,300,10500))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0,0,300,30+350*len(image_url)))
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         layout = QHBoxLayout(self.scrollAreaWidgetContents)
 
