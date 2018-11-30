@@ -22,6 +22,5 @@ def isColorSimilar(im_color, chart):
         dE_color = deltaE_cie76(rgb2lab(color_3d), lab)
 
         if dE_color.any() < threshold :
-            print('True')
             return True
     return False
