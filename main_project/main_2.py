@@ -50,7 +50,7 @@ class Checking(object):
 
     def retranslateUi(self, OtherWindow):
         translate = QCoreApplication.translate
-        OtherWindow.setWindowTitle(translate("OtherWindow", "멧돌 2"))
+        OtherWindow.setWindowTitle(translate("OtherWindow", "불판 2"))
         self.checkbox1.setText(translate("OtherWindow",'의자'))
         self.checkbox2.setText(translate("OtherWindow",'책상'))
         self.checkbox3.setText(translate("OtherWindow",'소파'))
