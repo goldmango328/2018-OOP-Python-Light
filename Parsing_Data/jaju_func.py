@@ -51,7 +51,7 @@ def get_suburl(data):
     return sub_url
 
 class chair:
-    def __init__(self,room_size,in_url,chart):
+    def __init__(self,room_size,in_url,pic_chart):
         self.html= get_html(in_url)
         self.soup = bs4.BeautifulSoup(self.html, 'html.parser')
         self.chart = chart
