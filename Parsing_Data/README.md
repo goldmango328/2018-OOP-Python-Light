@@ -40,3 +40,6 @@ remod_class1.py를 실행하다가 오류가 발생했어요ㅠㅜ
   File "C:\Users\지명금\AppData\Local\Programs\Python\Python37-32\lib\site-packages\PIL\Image.py", line 801, in frombytes
     raise ValueError("not enough image data")
 ValueError: not enough image data</code></pre>
+
+## 2018-12-15 PhantomJS download  
+http://phantomjs.org/download.html  
