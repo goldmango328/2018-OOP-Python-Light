@@ -28,7 +28,7 @@ def get_url(data):
 
 
 class parsing_data:
-    def __init__(self, in_url):
+    def __init__(self, in_url,room_size):
         self.html= get_html(in_url)
         self.data = bs4.BeautifulSoup(self.html, 'html.parser')
         self.image = []
@@ -36,6 +36,7 @@ class parsing_data:
         self.price = []
         self.size = []
         self.color = []
+        self.room_size = room_size
         self.url = get_url(self.data)
 
     def get_img(self, sub):
@@ -71,8 +72,7 @@ class parsing_data:
             a = int(size_in[0].split(': ')[1])
             b = int(size_in[1].split(': ')[1])
             c= int(size_in[2].split(': ')[1])
-            print(a, b, c)
-            if input_size == '원룸':
+            if input_size == self.room_size:
                 if a>250 or b>250 or c>250:
                     self.size.append([a, b, c])
                     return False
@@ -102,7 +102,6 @@ class parsing_data:
                 image = self.get_img(sub)
                 color = self.get_color('https://www.ikea.com'+ image)
                 if isColorSimilar(color, pic_chart):
-                    print('Yes')
                     if self.get_size(sub) == True:
                         self.image.append(image)
                         self.color.append(color)
@@ -140,8 +139,7 @@ class table(parsing_data):
         elif len(size_in) == 3:
             a = int(size_in[0].split(': ')[1])
             b = int(size_in[1].split(': ')[1])
-            print(a,b)
-            if input_size == '원룸':
+            if input_size == self.room_size:
                 if a>250 or b>250:
                     return False
                 else:
@@ -154,7 +152,7 @@ class table(parsing_data):
             a = int(size_in[0].split(': ')[1])
             b = int(size_in[1].split(': ')[1])
             c = int(size_in[2].split(': ')[1])
-            if input_size == '원룸':
+            if input_size == self.room_size:
                 if a>250 or b>250 or c>250:
                     return False
                 else:
@@ -165,31 +163,30 @@ class table(parsing_data):
                 return True
 
 
-def ikea_sofa(room_size, pic_chart, theme_pic_url):
+def ikea_sofa(room_size, pic_chart):
     # class 처리
     # 소파
-    def sofa_data():
-        SOFA = parsing_data('https://www.ikea.com/kr/ko/catalog/categories/departments/living_room/39130/')
-        name, price, size, image = SOFA.print_all()
-        #print(name, price, size, image)
+    SOFA = parsing_data('https://www.ikea.com/kr/ko/catalog/categories/departments/living_room/39130/',room_size)
+    name, price, size, image = SOFA.print_all()
+    return name,price,size,image
 
 
-def ikea_chair(room_size, pic_chart, theme_pic_url):
-    CHAIR = chair('https://www.ikea.com/kr/ko/catalog/categories/departments/dining/25219/')
+def ikea_chair(room_size, pic_chart):
+    CHAIR = chair('https://www.ikea.com/kr/ko/catalog/categories/departments/dining/25219/',room_size)
     name, price, size, image = CHAIR.print_all()
     return name, price, size, image
 
 
-def ikea_table(room_size, pic_chart, theme_pic_url):
+def ikea_table(room_size, pic_chart):
     # 책상
-    TABLE = table('https://www.ikea.com/kr/ko/catalog/categories/departments/dining/21825/')
+    TABLE = table('https://www.ikea.com/kr/ko/catalog/categories/departments/dining/21825/',room_size)
     name, price, size, image = TABLE.print_all()
     return name, price, size, image
 
 
-def ikea_closet(room_size, pic_chart, theme_pic_url):
+def ikea_closet(room_size, pic_chart):
     # 옷장
-    CLOS = parsing_data('https://www.ikea.com/kr/ko/catalog/categories/departments/bedroom/10451/')
+    CLOS = parsing_data('https://www.ikea.com/kr/ko/catalog/categories/departments/bedroom/10451/',room_size)
     name, price, size, image = CLOS.print_all()
     return name, price, size, image
 
