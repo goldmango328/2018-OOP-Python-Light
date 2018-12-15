@@ -28,7 +28,7 @@ def get_url(data):
 
 
 class parsing_data:
-    def __init__(self, in_url,room_size):
+    def __init__(self, in_url,room_size,pic_chart):
         self.html= get_html(in_url)
         self.data = bs4.BeautifulSoup(self.html, 'html.parser')
         self.image = []
@@ -37,6 +37,7 @@ class parsing_data:
         self.size = []
         self.color = []
         self.room_size = room_size
+        self.pic_chart = pic_chart
         self.url = get_url(self.data)
 
     def get_img(self, sub):
@@ -101,7 +102,7 @@ class parsing_data:
                 sub = bs4.BeautifulSoup(sub_html, 'html.parser')
                 image = self.get_img(sub)
                 color = self.get_color('https://www.ikea.com'+ image)
-                if isColorSimilar(color, pic_chart):
+                if isColorSimilar(color, self.pic_chart):
                     if self.get_size(sub) == True:
                         self.image.append(image)
                         self.color.append(color)
@@ -166,27 +167,27 @@ class table(parsing_data):
 def ikea_sofa(room_size, pic_chart):
     # class 처리
     # 소파
-    SOFA = parsing_data('https://www.ikea.com/kr/ko/catalog/categories/departments/living_room/39130/',room_size)
+    SOFA = parsing_data('https://www.ikea.com/kr/ko/catalog/categories/departments/living_room/39130/',room_size,pic_chart)
     name, price, size, image = SOFA.print_all()
     return name,price,size,image
 
 
 def ikea_chair(room_size, pic_chart):
-    CHAIR = chair('https://www.ikea.com/kr/ko/catalog/categories/departments/dining/25219/',room_size)
+    CHAIR = chair('https://www.ikea.com/kr/ko/catalog/categories/departments/dining/25219/',room_size,pic_chart)
     name, price, size, image = CHAIR.print_all()
     return name, price, size, image
 
 
 def ikea_table(room_size, pic_chart):
     # 책상
-    TABLE = table('https://www.ikea.com/kr/ko/catalog/categories/departments/dining/21825/',room_size)
+    TABLE = table('https://www.ikea.com/kr/ko/catalog/categories/departments/dining/21825/',room_size,pic_chart)
     name, price, size, image = TABLE.print_all()
     return name, price, size, image
 
 
 def ikea_closet(room_size, pic_chart):
     # 옷장
-    CLOS = parsing_data('https://www.ikea.com/kr/ko/catalog/categories/departments/bedroom/10451/',room_size)
+    CLOS = parsing_data('https://www.ikea.com/kr/ko/catalog/categories/departments/bedroom/10451/',room_size,pic_chart)
     name, price, size, image = CLOS.print_all()
     return name, price, size, image
 
