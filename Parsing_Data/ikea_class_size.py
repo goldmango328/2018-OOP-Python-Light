@@ -1,7 +1,7 @@
 import bs4
 import requests
-import image_percent_plot
-import color_similarity
+from color_similarity2 import *
+from image_color_cluster3 import *
 
 
 def get_html(url):
@@ -84,8 +84,8 @@ class parsing_data:
                 return True
 
     def get_color(self, image_url):
-        image = image_percent_plot.URLtoImage(image_url)
-        image_info = image_percent_plot.image_color_cluster(image)
+        image = URLtoImage(image_url)
+        image_info = image_color_cluster(image)
         return list(image_info.keys())[0]
 
     def print_all(self):
@@ -101,7 +101,7 @@ class parsing_data:
                 sub = bs4.BeautifulSoup(sub_html, 'html.parser')
                 image = self.get_img(sub)
                 color = self.get_color('https://www.ikea.com'+ image)
-                if color_similarity.isColorSimilar(color, pic_chart):
+                if isColorSimilar(color, pic_chart):
                     print('Yes')
                     if self.get_size(sub) == True:
                         self.image.append(image)
@@ -167,8 +167,8 @@ class table(parsing_data):
 
 if __name__ == "__main__":
     theme_pic_url = 'https://images.homify.com/c_fill,f_auto,h_700,q_auto/v1505116232/p/photo/image/2221347/30%ED%8F%89%EB%8C%80_%EC%95%84%ED%8C%8C%ED%8A%B8_%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B413.jpg'
-    theme_pic = image_percent_plot.URLtoImage(theme_pic_url)
-    pic_chart = image_percent_plot.image_color_cluster(theme_pic)
+    theme_pic = URLtoImage(theme_pic_url)
+    pic_chart = image_color_cluster(theme_pic)
     print(list(pic_chart.keys()))
     #class 처리
     #소파
