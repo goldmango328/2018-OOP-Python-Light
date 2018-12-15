@@ -4,7 +4,6 @@
 # selenium 설치 = pip install selenium
 # phantomjs 설치 = http://phantomjs.org/download.html에서 압축파일 다운로드 -> 압축해
 from color_similarity2 import *
-from image_color_cluster3 import *
 import bs4
 from selenium import webdriver
 import re
@@ -49,8 +48,6 @@ def get_suburl(data):
             product_url += '&'+x+'='+sub_dict[x]
         # print(product_url)
         sub_url.append(product_url)
-
-    print(len(sub_url))
     return sub_url
 
 class chair:
@@ -69,7 +66,7 @@ class chair:
     def get_name(self, soup):
         name = soup.select('div.gd_name')
         name_in = name[0].getText().strip() # 일부 제품에서 이름을 못 가져옴 : 이지 철재 폴딩 스툴_브라운
-        print(name_in)
+        # print(name_in)
         if '스툴' in name_in:
             self.name.append(name_in)
             return True,name_in
@@ -101,24 +98,6 @@ class chair:
         # print(price_in)
         self.price.append(price_in)
 
-    def get_size(self, soup): # 시간 잡아먹는 주범
-        source = soup.select('div.gd_info div#divGoodsClssGuideMid table tbody tr')
-        source = [ x.find('td').getText().upper() for x in source if x.find('th').getText() == '크기']
-        # print(source) # 일부 제품에서 soup를 가져오지 못하는 error발생 : 목재 선반형 스툴 / 이지 철재 폴딩 스툴_베이지
-        try :
-            text = source[0]
-        except IndexError:
-            print('ERROR',source)
-        
-        for x in ['x','X','CM','cm','(',')','높이','h','d','w','W','D','H']:
-            text = text.replace(x,' ')
-        text = text.split(' ')
-        cnt = text.count('')
-        for i in range(cnt):
-            text.remove('')
-        # print(text)
-        self.size.append(text)
-
     def print_all(self):
         self.url = get_suburl(self.soup)
         for url in self.url :
@@ -135,13 +114,12 @@ class chair:
             if parse == True:
                 # print("YES", end=' | ')
                 self.get_price(soup)
-                self.get_size(soup)
             else :
                 # print("NOPE")
                 self.url.remove(url)
                 self.name.remove(name)
 
-        return self.url, self.name, self.price, self.image, self.size, self.color
+        return self.url, self.name, self.price, self.image, self.color
 
 class table(chair):
     def get_name(self, soup):
@@ -168,11 +146,10 @@ if __name__ == "__main__":
     CHAIR = chair(url,chart)
     TABLE = table(url,chart)
     
-    ch_url, ch_name, ch_price, ch_img, ch_size, ch_color = CHAIR.print_all()
+    ch_url, ch_name, ch_price, ch_img, ch_color = CHAIR.print_all()
     print(len(ch_name), ch_name)
     print(len(ch_price), ch_price)
     print(len(ch_img), ch_img)
-    print(len(ch_size), ch_size)
     print(len(ch_color),ch_color)
     print("ch_total",len(ch_name))
     
@@ -180,7 +157,6 @@ if __name__ == "__main__":
     print(len(tb_name), tb_name)
     print(len(tb_price), tb_price)
     print(len(tb_img), tb_img)
-    print(len(tb_size), tb_size)
     print(len(tb_color),tb_color)
     print("tb_total",len(tb_name))
     
