@@ -145,7 +145,7 @@ class Result(object):
         
         for i in self.image_url:
             image = self.give_image(i,position)
-            # 이거 한번 테스트로 해볼래요? image.resize(600,600)
+            # 이거 테스트로.. ㅠㅜ image.scaled(600,600, QtCore.Qt.IgnoreAspectRatio)
             layout.addWidget(image)
             naaame = self.give_name(position)
             layout.addWidget(naaame)
