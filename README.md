@@ -9,3 +9,6 @@ pip install urllib
 pip install Pillow  
 pip install beautifulsoup4  
 pip install PyQt5  
+
+## NEED TO BE DOWNLOADED  
+phantomJS  
