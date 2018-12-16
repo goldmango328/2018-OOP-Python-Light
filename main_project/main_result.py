@@ -145,8 +145,6 @@ class Result(object):
             layout.addWidget(naaame)
             priceeee = self.give_price(position)
             layout.addWidget(priceeee)
-            siteeee = self.give_site(position)
-            layout.addWidget(siteeee)
             position += 1
 
         print('hi8')
