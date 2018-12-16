@@ -4,9 +4,9 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import urllib.request
 from ikea_function import *
-#from jaju_func import *
-#from remod_func import *
-#from io import StringIO
+from jaju_func import *
+from remod_func import *
+from io import StringIO
 
 #site = ['http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000215290&dspCatNo=010000041353', 'http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000182768&dspCatNo=010000041353', 'http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000182770&dspCatNo=010000041353', 'http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000215289&dspCatNo=010000041353', 'http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000019134&dspCatNo=010000041353', 'http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000197556&dspCatNo=010000041353', 'http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000197557&dspCatNo=010000041353', 'http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000215292&dspCatNo=010000041353', 'http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000020724&dspCatNo=010000041353', 'http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000197558&dspCatNo=010000041353', 'http://living.sivillage.com/jaju/product/productDetail?productNo=01P0000215291&dspCatNo=010000041353']
 #name = ['SÖDERHAMN 쇠데르함', 'FÄRLÖV 펠뢰브', 'SÖDERHAMN 쇠데르함', 'EKTORP 엑토르프', 'FLOTTEBO 플로테보', 'KLIPPAN 클리판', 'FRIHETEN 프리헤텐', 'LIDHULT 리드훌트', 'VIMLE 빔레']
@@ -93,7 +93,7 @@ class Result(object):
         self.image_url = image_url
         print('hi6')
 
-        # jaju_PhantomJS(driver, phantomjs_path)
+        jaju_PhantomJS(driver, phantomjs_path)
         for i in self.msg :
             print(i)
             if i == '의자' :
