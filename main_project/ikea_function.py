@@ -104,7 +104,7 @@ class parsing_data:
                 color = self.get_color('https://www.ikea.com'+ image)
                 if isColorSimilar(color, self.chart):
                     if self.get_size(sub) == True:
-                        self.image.append(image)
+                        self.image.append('https://www.ikea.com'+ image)
                         self.color.append(color)
                         self.get_name(sub)
                         self.get_price(sub)

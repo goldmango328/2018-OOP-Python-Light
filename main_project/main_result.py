@@ -26,13 +26,14 @@ class Result(object):
 
     def give_image(self, url, n):
         images = url
+        print(images)
         data = urllib.request.urlopen(images).read()
         image = QImage()
         image.loadFromData(data)
         lbl = QLabel(self.scrollAreaWidgetContents)
         lbl.setGeometry(30,30+350*n,260,300)
         lbli = QPixmap(image)
-        lbli.scaled(300,300,Qt.KeepAspectRatio)
+        lbli.scaled(260,300,Qt.KeepAspectRatio)
         lblii = lbl.setPixmap(lbli)
         return lblii
 
@@ -74,25 +75,6 @@ class Result(object):
 
     '''
     def show_result(self, OtherWindow, room, msg, theme, ob, selected_url):
-        print('hi1')
-        OtherWindow.resize(600,600)
-        OtherWindow.move(1300,200)
-        self.centralwidget = QWidget(OtherWindow)
-        print('hi1.5')
-
-        layout = QVBoxLayout(self.centralwidget)
-        print('hi2')
-        
-        self.scrollArea = QScrollArea(self.centralwidget)
-        layout.addWidget(self.scrollArea)
-        print('hi3')
-        
-        self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QRect(0,0,500,30+350*len(ob)))
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        layout = QHBoxLayout(self.scrollAreaWidgetContents)
-        print('hi4')
-
         self.room = room
         self.msg = msg
         self.theme = theme
@@ -134,11 +116,34 @@ class Result(object):
                 print('hi11')
 
 
+        print('hi1')
+        OtherWindow.resize(600,600)
+        OtherWindow.move(1300,200)
+        self.centralwidget = QWidget(OtherWindow)
+        print('hi1.5')
+
+        layout = QVBoxLayout(self.centralwidget)
+        print('hi2')
+        
+        self.scrollArea = QScrollArea(self.centralwidget)
+        layout.addWidget(self.scrollArea)
+        print('hi3')
+        
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QRect(0,0,500,30+350*len(self.name)))
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        layout = QHBoxLayout(self.scrollAreaWidgetContents)
+        print('hi4')
+
+        
         position = 0
         print('hi7')
+        print(self.name)
+        print(self.price)
+        print(self.image_url)
         # self.selected_url = ['https://images.homify.com/c_fill,f_auto,h_700,q_auto/v1544070461/p/photo/image/2825640/%EC%9D%B8%EC%B2%9C_%EB%85%BC%ED%98%84_%ED%95%9C%ED%99%94_%EC%97%90%EC%BD%94_22.jpg']
         
-        for i in self.selected_url:
+        for i in self.image_url:
             image = self.give_image(i,position)
             layout.addWidget(image)
             naaame = self.give_name(position)
