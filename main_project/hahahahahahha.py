@@ -12,8 +12,8 @@ from ikea_function import *
 #name = ['SÖDERHAMN 쇠데르함', 'FÄRLÖV 펠뢰브', 'SÖDERHAMN 쇠데르함', 'EKTORP 엑토르프', 'FLOTTEBO 플로테보', 'KLIPPAN 클리판', 'FRIHETEN 프리헤텐', 'LIDHULT 리드훌트', 'VIMLE 빔레']
 #price = ['570,000', '899,000', '700,000', '349,000', '689,000', '299,000', '549,000', '269,000', '809,000']
 #image_url = ['https://www.ikea.com/kr/ko/images/products/soderhamn-soedeleuham-in-yongsegsyeon-pingkeu__0409691_PE583233_S4.JPG', 'https://www.ikea.com/kr/ko/images/products/farlov-pelloebeu-in-yongsopa-hwaiteu__0479740_PE619080_S4.JPG', 'https://www.ikea.com/kr/ko/images/products/soderhamn-soedeleuham-in-yongsopa-pingkeu__0409688_PE583232_S4.JPG', 'https://www.ikea.com/kr/ko/images/products/ektorp-egtoleupeu-in-yongsopa-beiji__0386580_PE559161_S4.JPG', 'https://www.ikea.com/kr/ko/images/products/flottebo-peullotebo-sopabedeu-bojoteibeul-beiji__0540473_PE652970_S4.JPG', 'https://www.ikea.com/kr/ko/images/products/klippan-keullipan-in-yongsopa-beulaun__0562968_PE663658_S4.JPG', 'https://www.ikea.com/kr/ko/images/products/friheten-peuliheten-in-yongsopabedeu-beiji__0325767_PE523058_S4.JPG', 'https://www.ikea.com/kr/ko/images/products/lidhult-lideuhulteu-in-yongsegsyeon-beulaun__0660819_PE711216_S4.JPG', 'https://www.ikea.com/kr/ko/images/products/vimle-bimle-in-yongsopa-beiji__0514357_PE639443_S4.JPG']
-#driver = 0
-#phantomjs_path = '/Users/tripl/Desktop/phantomjs-2.1.1-windows'
+driver = 0
+phantomjs_path = '/Users/tripl/Desktop/phantomjs-2.1.1-windows/phantomjs-2.1.1-windows/bin/phantomjs'
 
 def get_imagechart(image_lst):
     pic_chart = []
@@ -101,13 +101,15 @@ class Result(object):
                 self.name += a
                 self.price += b
                 self.image_url += d
-                """
-                a,b,c,d = remod_chair(self.room, pic_chart)
+                
+                a,b,c,d = jaju_chair(self.room, pic_chart)
                 self.name += a
                 self.price += b
                 self.image_url +=d
-
-                a,b,c,d = jaju_chair(self.room, pic_chart)
+                
+                # remod와 같은 경우에는 데이터의 양이 많아 시간이 오래걸리는 관계로 주석처리함
+                """
+                a,b,c,d = remod_chair(self.room, pic_chart)
                 self.name += a
                 self.price += b
                 self.image_url +=d
@@ -117,22 +119,25 @@ class Result(object):
                 self.name += a
                 self.price += b
                 self.image_url += d
-                """
-                a,b,c,d = remod_table(self.room, pic_chart)
-                self.name += a
-                self.price += b
-                self.image_url +=d
-
+                
                 a,b,c,d = jaju_table(self.room, pic_chart)
                 self.name += a
                 self.price += b
                 self.image_url +=d
+                
                 """
+                a,b,c,d = remod_table(self.room, pic_chart)
+                self.name += a
+                self.price += b
+                self.image_url += d
+                """
+                
             if i == '옷장' :
                 a,b,c,d = ikea_closet(self.room, pic_chart)
                 self.name += a
                 self.price += b
                 self.image_url += d
+                
                 """
                 a,b,c,d = remod_closet(self.room, pic_chart)
                 self.name += a
@@ -145,6 +150,7 @@ class Result(object):
                 self.name += a
                 self.price += b
                 self.image_url += d
+                
                 """
                 a,b,c,d = remod_sofa(self.room, pic_chart)
                 self.name += a
@@ -152,8 +158,7 @@ class Result(object):
                 self.image_url +=d
                 """
                 print('hi11')
-
-
+                
         print('hi1')
         OtherWindow.resize(800,600)
         OtherWindow.move(1000,300)
