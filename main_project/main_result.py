@@ -10,7 +10,7 @@ from ikea_function import *
 #name = ['원형 수납 패브릭 스툴_그레이', '목재 선반형 스툴', '목재 선반형 바 스툴', '원형 수납 패브릭 스툴_민트', '크러쉬 스툴 26x21x39cm_베이지', '이지 철재 폴딩 스툴_베이지', '이지 철재 폴딩 스툴_그레이', '사각 접이식 수납 스툴_그레이', '크러쉬 스툴 28x21x22cm_다크브라운', '이지 철재 폴딩 스툴_브라운', '사각 접이식 수납 스툴_민트']
 #price = ['59,900원', '59,900원', '79,900원', '59,900원', '13,900원', '9,900원', '9,900원', '19,900원', '7,900원', '9,900원', '19,900원']
 #image_url = ['http://img.sivillage.com/files/product/01/P0000/21/52/90/01P0000215290_260.jpg', 'http://img.sivillage.com/files/product/01/P0000/18/27/68/01P0000182768_260.jpg', 'http://img.sivillage.com/files/product/01/P0000/18/27/70/01P0000182770_260.jpg', 'http://img.sivillage.com/files/product/01/P0000/21/52/89/01P0000215289_260.jpg', 'http://img.sivillage.com/files/product/01/P0000/01/91/34/01P0000019134_260.jpg', 'http://img.sivillage.com/files/product/01/P0000/19/75/56/01P0000197556_260.jpg', 'http://img.sivillage.com/files/product/01/P0000/19/75/57/01P0000197557_260.jpg', 'http://img.sivillage.com/files/product/01/P0000/21/52/92/01P0000215292_260.jpg', 'http://img.sivillage.com/files/product/01/P0000/02/07/24/01P0000020724_260.jpg', 'http://img.sivillage.com/files/product/01/P0000/19/75/58/01P0000197558_260.jpg', 'http://img.sivillage.com/files/product/01/P0000/21/52/91/01P0000215291_260.jpg']
-phantomjs_path = '/Users/tripl/Desktop/phantomjs-2.1.1-windows'
+phantomjs_path = '/Users/tripl/Desktop/phantomjs-2.1.1-windows/phantomjs-2.1.1-windows/bin/phantomjs'
 
 def get_imagechart(image_lst):
     pic_chart = []
