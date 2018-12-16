@@ -3,7 +3,7 @@ import requests
 from color_similarity2 import *
 from image_color_cluster3 import *
 
-input_size = '원룸'
+
 def get_html(url):
     """
     웹 사이트 주소를 입력 받아, html tag 를 읽어드려 반환한다.
@@ -73,7 +73,7 @@ class parsing_data:
             a = int(size_in[0].split(': ')[1])
             b = int(size_in[1].split(': ')[1])
             c= int(size_in[2].split(': ')[1])
-            if input_size == self.room_size:
+            if self.room_size == self.room_size:
                 if a>250 or b>250 or c>250:
                     self.size.append([a, b, c])
                     return False
@@ -140,7 +140,7 @@ class table(parsing_data):
         elif len(size_in) == 3:
             a = int(size_in[0].split(': ')[1])
             b = int(size_in[1].split(': ')[1])
-            if input_size == self.room_size:
+            if self.room_size == self.room_size:
                 if a>250 or b>250:
                     return False
                 else:
@@ -153,7 +153,7 @@ class table(parsing_data):
             a = int(size_in[0].split(': ')[1])
             b = int(size_in[1].split(': ')[1])
             c = int(size_in[2].split(': ')[1])
-            if input_size == self.room_size:
+            if self.room_size == '원룸':
                 if a>250 or b>250 or c>250:
                     return False
                 else:
@@ -226,5 +226,4 @@ if __name__ == "__main__":
         name, price, size, image = CLOS.print_all()
         print(name, price, size, image)
 
-    input_size = '원룸'
     table_data()
