@@ -59,16 +59,16 @@ class Checking(object):
         self.next.setText(translate("OtherWindow",'완료'))
                            
     def state(self):
-        self.msg = ""
+        self.msg = []
         if self.checkbox1.isChecked() == True:
-            self.msg += "의자 "
+            self.msg.append('의자')
         if self.checkbox2.isChecked() == True:
-            self.msg += "책상 "
+            self.msg.append("책상")
         if self.checkbox3.isChecked() == True:
-            self.msg += "소파 "
+            self.msg.append("소파")
         if self.checkbox4.isChecked() == True:
-            self.msg += "옷장 "
-        # print(msg)
+            self.msg.append("옷장")
+        # print(self.msg)
     
 
 if __name__ == '__main__':
