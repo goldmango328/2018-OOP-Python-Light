@@ -3,3 +3,5 @@
 2) jaju_chair(room_size, pic_chart)  
 3) jaju_table(room_size, pic_chart)  
 
+## remod_func.py에서  
+1) 
